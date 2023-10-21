@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HouseRequestState : HouseBaseState
@@ -13,17 +14,25 @@ public class HouseRequestState : HouseBaseState
     {
         base.Enter();
         Anim.SetTrigger(RequestTrigger);
-        GameManager.current.OnJActions += (Null => { GoNormal(); });
+        // GameManager.current.OnJActions += HandleTrick;
         House.bubble.gameObject.SetActive(true);
     }
 
     public override void Exit()
     {
         base.Exit();
-        GameManager.current.OnJActions -= (Null => { GoNormal(); });
+        // GameManager.current.OnJActions -= HandleTrick;
         House.bubble.gameObject.SetActive(false);
     }
 
+    private void HandleTrick(Null @null)
+    {
+        // check if its this house is selected
+        if (LevelManager.current.selectedHouse.HouseId == House.HouseId)
+        {
+            GoNormal();
+        }
+    }
     /**
      * Got satisfied. Cheers, and drop candy.
      */

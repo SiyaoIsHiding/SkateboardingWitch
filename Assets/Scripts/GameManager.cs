@@ -34,9 +34,44 @@ public class GameManager : MonoBehaviour
         TriggerOnMoveActions(input.Get<Vector2>());
     }
 
-    public event Action<Null> OnJActions;
-    private void OnJ(InputValue input)
+    #region tricks
+    public enum Trick
     {
-        OnJActions?.Invoke(null);
+        OLLIE,
+        KICKFLIP,
+        GRAB,
+        SHOVEIT
     }
+    
+    public enum TrickKey
+    {
+        SPACE,
+        O,
+        K,
+        L,
+        P
+    }
+    public event Action<Null> OnOllie;
+    public event Action<Null> OnKickflip;
+    public event Action<Null> OnGrab;
+    public event Action<Null> OnShoveit;
+    private Dictionary<TrickKey, bool> trickKeyStatus = new Dictionary<TrickKey, bool>();
+    
+    private void OnSpace(InputAction.CallbackContext context)
+    {
+        Debug.Log(context);   
+        // CheckTrick();
+    }
+    
+    
+    private void CheckTrick()
+    {
+        // print the dictionary
+        foreach (var pair in trickKeyStatus)
+        {
+            print(pair.Key + " " + pair.Value);
+        }
+    }
+    
+    #endregion
 }

@@ -202,6 +202,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6193017500418062429, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
       insertIndex: -1
       addedObject: {fileID: 805937440280473088}
+    - targetCorrespondingSourceObject: {fileID: 4600719538537239886, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1949936683225927583}
   m_SourcePrefab: {fileID: 100100000, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
 --- !u!1 &1127421529360844550 stripped
 GameObject:
@@ -265,6 +268,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a1eb868894423bbba8c060c406c508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7317902417166232085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4600719538537239886, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+  m_PrefabInstance: {fileID: 6509781130107715419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1949936683225927583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7317902417166232085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4a612405684c29b793a83a12032fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7966429306924269681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3808095084908904234, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
@@ -291,6 +311,7 @@ MonoBehaviour:
   HouseId: 0
   showArea: {fileID: 805937440280473088}
   candy: {fileID: 6129490843276906382}
+  bubble: {fileID: 1949936683225927583}
 --- !u!95 &8971104261050193220
 Animator:
   serializedVersion: 5

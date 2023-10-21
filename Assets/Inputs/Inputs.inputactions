@@ -60,13 +60,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "J",
-                    "type": "Button",
-                    "id": "3f6acce2-3044-4bae-ad61-6d795dfce311",
+                    "name": "Space",
+                    "type": "Value",
+                    "id": "7576625f-7828-41a7-8802-c5139b1316b9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -292,12 +292,12 @@
                 },
                 {
                     "name": "",
-                    "id": "fd5e5be6-645a-4fa7-ab7d-d1747b20bb9e",
-                    "path": "<Keyboard>/j",
+                    "id": "0e6b48d4-442e-4220-b591-d73701cf6912",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "J",
+                    "action": "Space",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

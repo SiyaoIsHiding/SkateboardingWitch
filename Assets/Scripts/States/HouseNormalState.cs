@@ -10,7 +10,7 @@ public class HouseNormalState : HouseBaseState
     {
         StateName = STATE.NORMAL;
         startWithRequest = _startWithRequest;
-        Debug.Log("HouseNormalState constructor");
+        
     }
 
     public override void Enter()
