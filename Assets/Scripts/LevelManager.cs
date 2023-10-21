@@ -11,10 +11,12 @@ public class LevelManager : MonoBehaviour
     public Slider healthBar;
     public int candyCount = 0;
     public float timeRemain = 60f;
+    public House selectedHouse;
 
     private void Awake()
     {
         current = this;
+        selectedHouse = null;
     }
 
     void Start()

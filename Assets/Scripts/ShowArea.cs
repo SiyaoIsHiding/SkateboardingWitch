@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Candy : MonoBehaviour
+public class ShowArea : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,10 +16,15 @@ public class Candy : MonoBehaviour
     {
         
     }
-
+    public event Action<Collider2D> OnPlayerEnter;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        LevelManager.current.CandyCollected();
-        gameObject.SetActive(false);
+        OnPlayerEnter?.Invoke(other);
+    }
+
+    public event Action<Collider2D> OnPlayerExit;
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        OnPlayerExit?.Invoke(other);
     }
 }

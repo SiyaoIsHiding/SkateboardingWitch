@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,5 +32,11 @@ public class GameManager : MonoBehaviour
     private void OnMove(InputValue input)
     {
         TriggerOnMoveActions(input.Get<Vector2>());
+    }
+
+    public event Action<Null> OnJActions;
+    private void OnJ(InputValue input)
+    {
+        OnJActions?.Invoke(null);
     }
 }
