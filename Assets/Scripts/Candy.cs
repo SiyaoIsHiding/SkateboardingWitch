@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hello : MonoBehaviour
+public class Candy : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +15,11 @@ public class Hello : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        LevelManager.current.CandyCollected();
+        Destroy(gameObject);
     }
 }
