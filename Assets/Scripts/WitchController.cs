@@ -11,6 +11,8 @@ public class WitchController : MonoBehaviour
     private Rigidbody2D rb;
     private float speed = 5f;
     public WitchBaseState WitchState;
+    private Animator _animator;
+    // private readonly 
     public string StateName; // DEBUG ONLY
 
     private void Awake()
@@ -33,6 +35,7 @@ public class WitchController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
+        // _animator.SetFloat();
     }
     
     public void OnSpace(InputAction.CallbackContext context)

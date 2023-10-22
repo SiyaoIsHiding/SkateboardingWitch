@@ -29,34 +29,4 @@ public class WitchIdleState : WitchBaseState
             Stage = EVENT.EXIT;
         }
     }
-    
-    public void GoMove(InputManager.SingleKey.KeyType key)
-    {
-        InputManager.ComboRequest requestedCombo = LevelManager.current.selectedHouse.RequestedCombo;
-        if (requestedCombo == null)
-        {
-            return;
-        }
-
-        if (requestedCombo.Progress(key))
-        {
-            // success
-            switch (key)
-            {
-                case (InputManager.SingleKey.KeyType.O):
-                    NextState = new WitchMoveBaseState(GO, InputManager.SingleKey.KeyType.O);
-                    break;
-                case (InputManager.SingleKey.KeyType.P):
-                    NextState = new WitchMoveBaseState(GO, InputManager.SingleKey.KeyType.P);
-                    break;
-                case (InputManager.SingleKey.KeyType.K):
-                    NextState = new WitchMoveBaseState(GO, InputManager.SingleKey.KeyType.K);
-                    break;
-                case (InputManager.SingleKey.KeyType.L):
-                    NextState = new WitchMoveBaseState(GO, InputManager.SingleKey.KeyType.L);
-                    break;
-            }
-            Stage = EVENT.EXIT;
-        }
-    }
 }
