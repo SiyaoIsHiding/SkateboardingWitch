@@ -9,16 +9,18 @@ public static class Constants
         public const int INITIAL_REQUEST_COUNT = 3;
     }
     
-    public static class Trick
+    public static class Witch
     {
         public const float JUMP_END_TIME = 1f;
         public const float MOVE_END_TIME = 0.5f;
         public const float FALL_TIME = 0.2f;
+        public const float CAPTURE_TIME = 1f;
     }
 
     public static class Level
     {
-        public const float CANDY_MAX = 5;
+        public const int CANDY_MAX = 5;
+        public const int GHOST_COUNT = 5;
     }
     
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HauntHauntingState : HauntBaseState
@@ -14,11 +15,14 @@ public class HauntHauntingState : HauntBaseState
         Anim.SetTrigger(HauntingTrigger);
         Debug.Log(Haunt.house.HouseId);
         LevelManager.current.ReadyHauntHouses.Remove(Haunt.house.HouseId);
+        LevelManager.current.HauntingHouse.Add(Haunt.house.HouseId, Haunt.house);
+        Haunt.StartCoroutine(NaturallyHaunted());
     }
 
     public override void Exit()
     {
         base.Exit();
+        LevelManager.current.HauntingHouse.Remove(Haunt.house.HouseId);
     }
 
     public void GoCaptured()
