@@ -33,6 +33,16 @@ public class LevelManager : MonoBehaviour
     public void CandyCollected()
     {
         candyCount++;
-        healthBar.value += 0.5f;
+        healthBar.value += 0.2f;
+    }
+
+    public void ProcessTrickKey(InputManager.SingleKey.KeyType singleKey)
+    {
+        if (selectedHouse != null && selectedHouse.HouseState is HouseRequestState && selectedHouse.RequestedCombo != null)
+        {
+            selectedHouse.RequestedCombo.OnTrickComplete += @null => { Debug.Log("Trick completed"); };
+            selectedHouse.RequestedCombo.OnTrickFailed += @null => { Debug.Log("Trick failed"); };
+            selectedHouse.RequestedCombo.Progress(singleKey);
+        }
     }
 }

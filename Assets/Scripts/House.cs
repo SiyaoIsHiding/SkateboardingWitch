@@ -12,11 +12,13 @@ public class House : MonoBehaviour
     public ShowArea showArea;
     public Candy candy;
     public Bubble bubble;
+    public InputManager.ComboRequest RequestedCombo;
     
     
     void Awake()
     {
         HouseState = new HouseNormalState(gameObject);
+        RequestedCombo = null;
     }
     
     void Start()

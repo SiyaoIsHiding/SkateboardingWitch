@@ -14,14 +14,25 @@ public class HouseRequestState : HouseBaseState
     {
         base.Enter();
         Anim.SetTrigger(RequestTrigger);
-        // GameManager.current.OnJActions += HandleTrick;
         House.bubble.gameObject.SetActive(true);
+        InputManager.PresetCombo combo = InputManager.PresetCombo.PresetCombos[Random.Range(0, 6)];
+        House.RequestedCombo = new InputManager.ComboRequest(combo);
+        House.RequestedCombo.OnTrickComplete += HandleTrick;
+        House.RequestedCombo.OnTrickFailed += (@null => { Debug.Log("Trick failed"); });
+        Debug.Log("Requested combo: " + House.RequestedCombo.Combo.Type);
+        // list the SingleKey in the combo
+        string comboString = "";
+        comboString += House.HouseId.ToString();
+        foreach (InputManager.SingleKey key in House.RequestedCombo.Combo.KeySequence)
+        {
+            comboString += key.keyType.ToString() + " ";
+        }
+        Debug.Log(comboString);
     }
 
     public override void Exit()
     {
         base.Exit();
-        // GameManager.current.OnJActions -= HandleTrick;
         House.bubble.gameObject.SetActive(false);
     }
 

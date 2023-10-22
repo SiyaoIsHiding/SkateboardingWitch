@@ -19,6 +19,7 @@ public class Candy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //TODO: candy does not appear again after collected
         LevelManager.current.CandyCollected();
         gameObject.SetActive(false);
     }
