@@ -6,10 +6,17 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     public SpriteRenderer[] buttons;
+
+    private InputManager.PresetCombo combo; 
+    public SpriteRenderer _spriteRenderer;
+
+    private void Awake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -18,14 +25,34 @@ public class Bubble : MonoBehaviour
         
     }
 
-    public void ShowButtonsOnBubble(InputManager.PresetCombo combo)
+    public void SetInvisible()
     {
-        Debug.Log("ShowButtonsOnBubble");
+        _spriteRenderer.enabled = false;
+        foreach (var button in buttons)
+        {
+            button.enabled = false;
+        }
+    }
+
+    public void SetVisible()
+    {
+        _spriteRenderer.enabled = true;
+        foreach (var button in buttons)
+        {
+            button.enabled = true;
+        }
+        ShowButtonsOnBubble();
+    }
+
+    public void SetCombo(InputManager.PresetCombo _combo)
+    {
+        combo = _combo;
+    }
+
+    public void ShowButtonsOnBubble()
+    {
         for (int i = 0; i < 3; i++)
         {
-            Debug.Log(combo.KeySequence.Count);
-            Debug.Log(GameManager.current.buttons.Length);
-            Debug.Log(combo.KeySequence[i+1]);
             switch (combo.KeySequence[i+1])
             {
                 case InputManager.SingleKey.KeyType.O:

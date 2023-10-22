@@ -82,15 +82,11 @@ public class LevelManager : MonoBehaviour
 
     public bool Capture()
     {
-        Debug.Log("Tried Capture");
         // if the selected house is in HauntingHouse
-        Debug.Log("selectedHouse: " + (selectedHouse != null).ToString());
-        Debug.Log("InHauntingHouse: " + HauntingHouse.ContainsKey(selectedHouse.HouseId).ToString());
         if (selectedHouse && HauntingHouse.ContainsKey(selectedHouse.HouseId))
         {
             if (candyCount == Constants.Level.CANDY_MAX)
             {
-                Debug.Log("Eligible to caputre");
                 candyCount = 0;
                 spellMeter.AdjustSpellMeter(candyCount);
                 GhostsLeftCount--;
