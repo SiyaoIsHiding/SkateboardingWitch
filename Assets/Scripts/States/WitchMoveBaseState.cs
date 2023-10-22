@@ -90,6 +90,7 @@ public class WitchMoveBaseState : WitchBaseState
         if (Witch.WitchState == this)
         {
             GoIdle();
+            requestedCombo?.ProgressUnintendedIdle();
         }
     }
 }

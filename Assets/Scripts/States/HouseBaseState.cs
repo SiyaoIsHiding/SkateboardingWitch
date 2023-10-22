@@ -10,12 +10,14 @@ public class HouseBaseState
     {
         NORMAL,
         REQUEST,
+        HAUNTING,
         DEAD
     }
     
     protected readonly int NormalTrigger = Animator.StringToHash("GoNormal");
     protected readonly int RequestTrigger = Animator.StringToHash("GoRequest");
     protected readonly int DeadTrigger = Animator.StringToHash("GoDead");
+    protected readonly int HauntingTrigger = Animator.StringToHash("GoHaunting");
 
     public enum EVENT
     {

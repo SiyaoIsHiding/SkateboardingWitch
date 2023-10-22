@@ -12,7 +12,8 @@ public class WitchBaseState
         P,
         K,
         L,
-        JUMP
+        JUMP,
+        FALL
     }
     public enum EVENT
     {
@@ -33,7 +34,7 @@ public class WitchBaseState
     protected readonly int PTrigger = Animator.StringToHash("GoP");
     protected readonly int KTrigger = Animator.StringToHash("GoK");
     protected readonly int LTrigger = Animator.StringToHash("GoL");
-    protected readonly int LandTrigger = Animator.StringToHash("GoLand");
+    protected readonly int FallTrigger = Animator.StringToHash("GoFall");
     
     public WitchBaseState(GameObject go)
     {

@@ -12,15 +12,6 @@ public class InputManager : MonoBehaviour
     {
         PresetCombo.InitPresetCombo();
     }
-    
-    private readonly int IdleTrigger = Animator.StringToHash("GoIdle");
-    private readonly int OTrigger = Animator.StringToHash("GoO");
-    private readonly int KTrigger = Animator.StringToHash("GoK");
-    private readonly int LTrigger = Animator.StringToHash("GoL");
-    private readonly int PTrigger = Animator.StringToHash("GoP");
-    private readonly int JumpTrigger = Animator.StringToHash("GoJump");
-    public WitchController witch;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -121,6 +112,12 @@ public class InputManager : MonoBehaviour
                     OnTrickFailed?.Invoke(null);
                     return false;
                 }
+            }
+
+            public void ProgressUnintendedIdle()
+            {
+                ProgressIndex = 0;
+                OnTrickFailed?.Invoke(null);
             }
         }
     #endregion

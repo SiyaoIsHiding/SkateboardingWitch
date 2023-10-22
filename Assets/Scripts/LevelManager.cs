@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager current;
-    public Slider healthBar;
-    public int candyCount = 0;
+    public float spellMeterValue = 0f;
     public float timeRemain = 60f;
     public House selectedHouse;
+    public SpellMeter spellMeter;
 
     private void Awake()
     {
@@ -32,17 +32,17 @@ public class LevelManager : MonoBehaviour
     
     public void CandyCollected()
     {
-        candyCount++;
-        healthBar.value += 0.2f;
+        spellMeter.AdjustSpellMeter(spellMeterValue + 0.2f);
+        spellMeterValue = spellMeter.GetSpellMeter();
     }
 
-    public void ProcessTrickKey(InputManager.SingleKey.KeyType singleKey)
-    {
-        if (selectedHouse != null && selectedHouse.HouseState is HouseRequestState && selectedHouse.RequestedCombo != null)
-        {
-            selectedHouse.RequestedCombo.OnTrickComplete += @null => { Debug.Log("Trick completed"); };
-            selectedHouse.RequestedCombo.OnTrickFailed += @null => { Debug.Log("Trick failed"); };
-            selectedHouse.RequestedCombo.Progress(singleKey);
-        }
-    }
+    // public void ProcessTrickKey(InputManager.SingleKey.KeyType singleKey)
+    // {
+    //     if (selectedHouse != null && selectedHouse.HouseState is HouseRequestState && selectedHouse.RequestedCombo != null)
+    //     {
+    //         selectedHouse.RequestedCombo.OnTrickComplete += @null => { Debug.Log("Trick completed"); };
+    //         selectedHouse.RequestedCombo.OnTrickFailed += @null => { Debug.Log("Trick failed"); };
+    //         selectedHouse.RequestedCombo.Progress(singleKey);
+    //     }
+    // }
 }

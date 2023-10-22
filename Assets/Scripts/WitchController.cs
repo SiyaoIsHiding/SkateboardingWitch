@@ -12,7 +12,8 @@ public class WitchController : MonoBehaviour
     private float speed = 5f;
     public WitchBaseState WitchState;
     private Animator _animator;
-    // private readonly 
+    private readonly int HorizontalAnimator  = Animator.StringToHash("Horizontal");
+    private readonly int VerticalAnimator  = Animator.StringToHash("Vertical");
     public string StateName; // DEBUG ONLY
 
     private void Awake()
@@ -22,6 +23,7 @@ public class WitchController : MonoBehaviour
 
     void Start()
     {
+        _animator = GetComponent<Animator>();
         WitchState = new WitchIdleState(gameObject);
     }
     
@@ -35,7 +37,20 @@ public class WitchController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
-        // _animator.SetFloat();
+        if (Mathf.Abs(move.x) > 0.1 || Mathf.Abs(move.y) > 0.1)
+        {
+            _animator.SetFloat(HorizontalAnimator, move.x);
+            _animator.SetFloat(VerticalAnimator, move.y);
+        }
+    }
+
+    public void FallOnLeft()
+    {
+        if (move.x < 0.1 && move.y < 0.1)
+        {
+            _animator.SetFloat(HorizontalAnimator, -1);
+            _animator.SetFloat(VerticalAnimator, 0);
+        }
     }
     
     public void OnSpace(InputAction.CallbackContext context)
