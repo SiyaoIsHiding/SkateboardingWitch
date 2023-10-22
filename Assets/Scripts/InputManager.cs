@@ -96,12 +96,10 @@ public class InputManager : MonoBehaviour
                 if (ProgressIndex < Combo.KeySequence.Count - 1)
                 {
                     ProgressIndex++;
-                    Debug.Log(key.ToString() + " index: " + ProgressIndex);
                     return true;
                 }
                 else
                 {
-                    Debug.Log(key.ToString() + " finished");
                     _finished = true;
                     OnTrickComplete?.Invoke(null);
                     return true;

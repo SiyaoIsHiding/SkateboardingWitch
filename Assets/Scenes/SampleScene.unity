@@ -2432,6 +2432,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3349406661814464982, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent8
