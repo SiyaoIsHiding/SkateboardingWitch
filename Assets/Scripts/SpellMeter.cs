@@ -12,24 +12,36 @@ public class SpellMeter : MonoBehaviour
     public Sprite[] borders; // [0] for not full [1] for full
     public GameObject spellReady;
 
-    public void AdjustSpellMeter(float value)
+    public void AdjustSpellMeter(int count)
     {
-        if (value > 1) value = 1;
-        slider.value = value;
-        if (value >= 0.99f)
-        {
-            BorderImage.sprite = borders[1];
-            spellReady.SetActive(true);
-        }
-        else
+        float sliderValue = count / (float)Constants.Level.CANDY_MAX;
+        slider.value = sliderValue;
+        if (count == 0)
         {
             BorderImage.sprite = borders[0];
             spellReady.SetActive(false);
         }
+        else if (count == 1)
+        {
+            BorderImage.sprite = borders[1];
+            spellReady.SetActive(false);
+        }
+        else if (count == 2)
+        {
+            BorderImage.sprite = borders[2];
+            spellReady.SetActive(false);
+        }
+        else if (count == 3 || count == 4)
+        {
+            BorderImage.sprite = borders[3];
+            spellReady.SetActive(false);
+        }
+        else
+        {
+            // 5
+            BorderImage.sprite = borders[4];
+            spellReady.SetActive(true);
+        }
     }
-
-    public float GetSpellMeter()
-    {
-        return slider.value;
-    }
+    
 }

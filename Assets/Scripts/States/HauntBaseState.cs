@@ -31,8 +31,8 @@ public class HauntBaseState
     public HauntBaseState(GameObject go)
     {
         GO = go;
-        Anim = go.GetComponent<Animator>();
         Haunt = go.GetComponent<Haunt>();
+        Anim = Haunt.ghostAnim;
         Stage = EVENT.ENTER;
     }
     

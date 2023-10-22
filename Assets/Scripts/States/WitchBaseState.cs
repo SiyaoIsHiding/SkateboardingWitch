@@ -13,7 +13,8 @@ public class WitchBaseState
         K,
         L,
         JUMP,
-        FALL
+        FALL,
+        CAPTURE
     }
     public enum EVENT
     {

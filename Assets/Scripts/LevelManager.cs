@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager current;
-    public float spellMeterValue = 0f;
+    public int candyCount = 0;
     public House selectedHouse;
     public SpellMeter spellMeter;
     public House[] allHouses;
@@ -34,6 +34,8 @@ public class LevelManager : MonoBehaviour
             House h = GetRandomHouse(ReadyRequestHouses);
             ((HouseNormalState) h.HouseState).GoRequest();
         }
+
+        StartCoroutine(HauntInLoop());
     }
 
     // Update is called once per frame
@@ -43,8 +45,11 @@ public class LevelManager : MonoBehaviour
     
     public void CandyCollected()
     {
-        spellMeter.AdjustSpellMeter(spellMeterValue + 0.2f);
-        spellMeterValue = spellMeter.GetSpellMeter();
+        if (candyCount < Constants.Level.CANDY_MAX)
+        {
+            candyCount++;
+        }
+        spellMeter.AdjustSpellMeter(candyCount);
     }
     
     private House GetRandomHouse(Dictionary<int, House> houses)
@@ -60,6 +65,8 @@ public class LevelManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Constants.House.GO_HAUNTING_TIME);
             House h = GetRandomHouse(ReadyHauntHouses);
+            Debug.Log(h.HouseId);
+            Debug.Log(h.haunt.CurrentState.StateName + " " + h.HouseId + " is haunting");
             ((HauntNormalState) h.haunt.CurrentState).GoHaunting();
         }
     }
