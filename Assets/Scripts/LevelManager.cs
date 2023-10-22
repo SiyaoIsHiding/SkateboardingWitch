@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,20 +20,34 @@ public class LevelManager : MonoBehaviour
     public Dictionary<int, House> HauntingHouse = new Dictionary<int, House>();
     public int GhostsLeftCount = Constants.Level.GHOST_COUNT;
     public TextMeshProUGUI ghostCountText;
+
     private void Awake()
     {
         current = this;
         selectedHouse = null;
+
+        foreach (var h in allHouses)
+        {
+            try
+            {
+                ReadyHauntHouses.Add(h.HouseId, h);
+            }
+            catch (Exception e)
+            {
+            }
+
+            try
+            {
+                ReadyRequestHouses.Add(h.HouseId, h);
+            }
+            catch (Exception e)
+            {
+            }
+        }
     }
 
     void Start()
     {
-        foreach (var h in allHouses)
-        {
-            ReadyHauntHouses.Add(h.HouseId, h);
-            ReadyRequestHouses.Add(h.HouseId, h);
-        }
-
         for (int i = 0; i < Constants.House.INITIAL_REQUEST_COUNT; i++)
         {
             House h = GetRandomHouse(ReadyRequestHouses);
@@ -59,10 +74,25 @@ public class LevelManager : MonoBehaviour
 
     private House GetRandomHouse(Dictionary<int, House> houses)
     {
-        int index = UnityEngine.Random.Range(0, houses.Count);
-        // houses[keys][index]
-        House house = houses.Values.ElementAt(index);
-        return house;
+        while (true)
+        {
+            try
+            {
+                int index = UnityEngine.Random.Range(0, houses.Count);
+                // houses[keys][index]
+                House house = houses.Values.ElementAt(index);
+                return house;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                if (houses.Count == 0)
+                {
+                    break;
+                }
+            }
+        }
+
+        return null;
     }
 
     IEnumerator HauntInLoop()
@@ -73,8 +103,12 @@ public class LevelManager : MonoBehaviour
             if (HauntingHouse.Count < GhostsLeftCount)
             {
                 House h = GetRandomHouse(ReadyHauntHouses);
-                // Debug.Log(h.HouseId);
-                // Debug.Log(h.haunt.CurrentState.StateName + " " + h.HouseId + " is haunting");
+                if (h == null)
+                {
+                    // end
+                    break;
+                }
+
                 ((HauntNormalState)h.haunt.CurrentState).GoHaunting();
             }
         }
