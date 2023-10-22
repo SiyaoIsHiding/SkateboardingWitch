@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 14d527dd4a297bd4ca69da968988ad12
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Nanum Pen
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: dbb5fc9a914fa0146bb3866a85c55eab, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
