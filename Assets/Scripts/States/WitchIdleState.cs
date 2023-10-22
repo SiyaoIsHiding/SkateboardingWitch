@@ -11,7 +11,6 @@ public class WitchIdleState : WitchBaseState
     {
         base.Enter();
         Anim.SetTrigger(IdleTrigger);
-        Debug.LogWarning("Set IdleTrigger");
     }
 
     public void GoJump()

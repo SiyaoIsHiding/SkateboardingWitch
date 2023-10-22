@@ -15,9 +15,10 @@ public class HouseRequestState : HouseBaseState
         base.Enter();
         LevelManager.current.ReadyRequestHouses.Remove(House.HouseId);
         Anim.SetTrigger(RequestTrigger);
-        House.bubble.gameObject.SetActive(true);
         InputManager.PresetCombo combo = InputManager.PresetCombo.PresetCombos[Random.Range(0, InputManager.PresetCombo.PresetCombos.Count)];
         House.RequestedCombo = new InputManager.ComboRequest(combo);
+        House.bubble.gameObject.SetActive(true);
+        House.bubble.ShowButtonsOnBubble(House.RequestedCombo.Combo);
         House.RequestedCombo.OnTrickComplete += HandleTrick;
         House.RequestedCombo.OnTrickFailed += (@null => { Debug.Log("Trick failed"); });
         // list the SingleKey in the combo
