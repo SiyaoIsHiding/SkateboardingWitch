@@ -86,7 +86,7 @@ public class InputManager : MonoBehaviour
             OnTrickComplete += (@null => {GameManager.current.trickhit.Play();});
             OnTrickComplete += (@null =>
             {
-                cheer();
+                GameManager.current.StartCoroutine(cheer());
             });
             OnTrickFailed += (@null => {GameManager.current.resident_boo.Play();});
         }
