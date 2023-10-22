@@ -11,7 +11,6 @@ public class HauntNormalState : HauntBaseState
 
     public void GoHaunting()
     {
-        //TODO: GoHaunting mechanism
         NextState = new HauntHauntingState(GO);
         Stage = EVENT.EXIT;
     }

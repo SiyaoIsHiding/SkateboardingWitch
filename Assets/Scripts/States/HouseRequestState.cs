@@ -27,7 +27,7 @@ public class HouseRequestState : HouseBaseState
         {
             comboString += key.ToString() + " ";
         }
-        Debug.Log(comboString);
+        // Debug.Log(comboString);
     }
 
     public override void Exit()

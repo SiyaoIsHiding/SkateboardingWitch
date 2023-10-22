@@ -8,4 +8,5 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
 
+    public Sprite[] buttons;
 }

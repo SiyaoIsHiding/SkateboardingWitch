@@ -86,7 +86,7 @@ public class WitchMoveBaseState : WitchBaseState
     
     IEnumerator NaturallyEnds()
     {
-        yield return new WaitForSeconds(Constants.Trick.MOVE_END_TIME);
+        yield return new WaitForSeconds(Constants.Witch.MOVE_END_TIME);
         if (Witch.WitchState == this)
         {
             GoFall();

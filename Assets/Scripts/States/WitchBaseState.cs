@@ -36,6 +36,8 @@ public class WitchBaseState
     protected readonly int KTrigger = Animator.StringToHash("GoK");
     protected readonly int LTrigger = Animator.StringToHash("GoL");
     protected readonly int FallTrigger = Animator.StringToHash("GoFall");
+    protected readonly int CaptureTrigger = Animator.StringToHash("GoCaptureGhost");
+    //TODO: edit animator
     
     public WitchBaseState(GameObject go)
     {
