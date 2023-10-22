@@ -16,6 +16,7 @@ public class WitchJumpState : WitchBaseState
         Anim.ResetTrigger(IdleTrigger);
         Anim.SetTrigger(JumpTrigger);
         Witch.StartCoroutine(NaturallyEnds());
+        GameManager.current.jump.Play();
     }
     
     public void GoMove(InputManager.SingleKey.KeyType key)
