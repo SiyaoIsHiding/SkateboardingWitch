@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
 
     // [Space, O, P, L, K]
     public Sprite[] buttons;
+    public AudioSource jump;
+    public AudioSource resident_cheer;
+    public AudioSource resident_boo;
+    public AudioSource trickhit;
 
     public void Awake()
     {

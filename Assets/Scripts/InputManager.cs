@@ -83,6 +83,18 @@ public class InputManager : MonoBehaviour
         {
             Combo = combo;
             ProgressIndex = 0;
+            OnTrickComplete += (@null => {GameManager.current.trickhit.Play();});
+            OnTrickComplete += (@null =>
+            {
+                cheer();
+            });
+            OnTrickFailed += (@null => {GameManager.current.resident_boo.Play();});
+        }
+
+        IEnumerator cheer()
+        {
+            yield return new WaitForSeconds(0.5f);
+            GameManager.current.resident_cheer.Play();
         }
 
         public event Action<Null> OnTrickComplete;
