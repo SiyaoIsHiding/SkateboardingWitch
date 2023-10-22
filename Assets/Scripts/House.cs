@@ -14,6 +14,7 @@ public class House : MonoBehaviour
     public Bubble bubble;
     public InputManager.ComboRequest RequestedCombo;
     public Haunt haunt;
+    public GameObject resident;
     
     void Awake()
     {
