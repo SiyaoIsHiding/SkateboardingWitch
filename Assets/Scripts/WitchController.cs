@@ -9,7 +9,7 @@ public class WitchController : MonoBehaviour
     
     private Vector2 move;
     private Rigidbody2D rb;
-    private float speed = 5f;
+    private float speed = 10f;
     public WitchBaseState WitchState;
     private Animator _animator;
     private readonly int HorizontalAnimator  = Animator.StringToHash("Horizontal");
