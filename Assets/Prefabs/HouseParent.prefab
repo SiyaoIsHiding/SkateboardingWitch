@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &768060642100229346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6497232955295958686}
+  m_Layer: 0
+  m_Name: Resident
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6497232955295958686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768060642100229346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5566602407236903002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3321954775089043885
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +253,7 @@ Transform:
   - {fileID: 7966429306924269681}
   - {fileID: 182229560023165137}
   - {fileID: 7310600430990299490}
+  - {fileID: 6497232955295958686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6705060630185703084
@@ -739,8 +771,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4600719538537239886, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5187791270577746179, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+      propertyPath: buttons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5187791270577746179, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+      propertyPath: buttons.Array.data[0]
+      value: 
+      objectReference: {fileID: 4198056755774799288}
+    - target: {fileID: 5187791270577746179, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+      propertyPath: buttons.Array.data[1]
+      value: 
+      objectReference: {fileID: 4707893523782322983}
+    - target: {fileID: 5187791270577746179, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+      propertyPath: buttons.Array.data[2]
+      value: 
+      objectReference: {fileID: 5768899928036327798}
     - target: {fileID: 6324375053370775423, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
       propertyPath: m_Size.x
       value: 4.1433916
