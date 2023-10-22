@@ -7,118 +7,119 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    Animator Anim; 
+    Animator Anim;
+
     private void Awake()
     {
         PresetCombo.InitPresetCombo();
     }
+
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    #region tricks
+
+    public class SingleKey
     {
-        
+        public enum KeyType
+        {
+            SPACE,
+            O,
+            K,
+            L,
+            P
+        }
+
+        public KeyType keyType;
+
+        public SingleKey(KeyType keyType)
+        {
+            this.keyType = keyType;
+        }
     }
-        #region tricks
 
-        public class SingleKey
+    public class PresetCombo
+    {
+        public List<SingleKey.KeyType> KeySequence;
+        public static List<PresetCombo> PresetCombos;
+
+        public PresetCombo(List<SingleKey.KeyType> keySequence)
         {
-            public enum KeyType
-            {
-                SPACE,
-                O,
-                K,
-                L,
-                P
-            }
-            
-            public KeyType keyType;
-            public SingleKey(KeyType keyType)
-            {
-                this.keyType = keyType;
-            }
+            KeySequence = keySequence;
         }
 
-        public class PresetCombo
+        public static void InitPresetCombo()
         {
-            public enum ComboType
+            PresetCombos = new List<PresetCombo>();
+            // each combo is space + three other keys
+            SingleKey.KeyType[] type4 =
+                { SingleKey.KeyType.P, SingleKey.KeyType.O, SingleKey.KeyType.K, SingleKey.KeyType.L };
+            for (int i = 0; i < 4; i++)
             {
-                TRICKCOMBO1,
-                TRICKCOMBO2,
-                TRICKCOMBO3,
-                TRICKCOMBO4,
-                TRICKCOMBO5,
-                TRICKCOMBO6,
-            }
-
-            public List<SingleKey> KeySequence;
-            public ComboType Type;
-            public static List<PresetCombo> PresetCombos;
-            public PresetCombo(ComboType comboType, List<SingleKey> keySequence)
-            {
-                KeySequence = keySequence;
-                Type = comboType;
-            }
-            
-            public static void InitPresetCombo()
-            {
-                PresetCombos = new List<PresetCombo>();
-                // each combo is space + three other keys
-                PresetCombos.Add(new PresetCombo(ComboType.TRICKCOMBO1, new List<SingleKey>(){new SingleKey(SingleKey.KeyType.SPACE), new SingleKey(SingleKey.KeyType.O), new SingleKey(SingleKey.KeyType.K), new SingleKey(SingleKey.KeyType.L)}));
-                PresetCombos.Add(new PresetCombo(ComboType.TRICKCOMBO2, new List<SingleKey>(){new SingleKey(SingleKey.KeyType.SPACE), new SingleKey(SingleKey.KeyType.O), new SingleKey(SingleKey.KeyType.K), new SingleKey(SingleKey.KeyType.P)}));
-                PresetCombos.Add(new PresetCombo(ComboType.TRICKCOMBO3, new List<SingleKey>(){new SingleKey(SingleKey.KeyType.SPACE), new SingleKey(SingleKey.KeyType.O), new SingleKey(SingleKey.KeyType.L), new SingleKey(SingleKey.KeyType.P)}));
-                PresetCombos.Add(new PresetCombo(ComboType.TRICKCOMBO4, new List<SingleKey>(){new SingleKey(SingleKey.KeyType.SPACE), new SingleKey(SingleKey.KeyType.K), new SingleKey(SingleKey.KeyType.L), new SingleKey(SingleKey.KeyType.P)}));
-                PresetCombos.Add(new PresetCombo(ComboType.TRICKCOMBO5, new List<SingleKey>(){new SingleKey(SingleKey.KeyType.SPACE), new SingleKey(SingleKey.KeyType.K), new SingleKey(SingleKey.KeyType.K), new SingleKey(SingleKey.KeyType.L)}));
-                PresetCombos.Add(new PresetCombo(ComboType.TRICKCOMBO6, new List<SingleKey>(){new SingleKey(SingleKey.KeyType.SPACE), new SingleKey(SingleKey.KeyType.L), new SingleKey(SingleKey.KeyType.K), new SingleKey(SingleKey.KeyType.L)}));
-            }
-        }
-
-        public class ComboRequest
-        {
-            public PresetCombo Combo;
-            public int ProgressIndex;
-            public ComboRequest(PresetCombo combo)
-            {
-                Combo = combo;
-                ProgressIndex = 0;
-            }
-            
-            public event Action<Null> OnTrickComplete;
-            public event Action<Null> OnTrickFailed;
-            public bool Progress(SingleKey.KeyType key)
-            {
-                if (key == Combo.KeySequence[ProgressIndex].keyType)
+                for (int j = 0; j < 4; j++)
                 {
-                    if (ProgressIndex < Combo.KeySequence.Count -1 )
+                    for (int k = 0; k < 4; k++)
                     {
-                        ProgressIndex++;
-                        Debug.Log(key.ToString()+" index: "+ ProgressIndex);
-                        return true;
+                        PresetCombos.Add(new PresetCombo(new List<SingleKey.KeyType>()
+                        {
+                            SingleKey.KeyType.SPACE, type4[i], type4[j], type4[k]
+                        }));
                     }
-                    else
-                    {
-                        Debug.Log(key.ToString()+" finished");
-                        OnTrickComplete?.Invoke(null);
-                        return true;
-                    }
+                }
+            }
+        }
+    }
+
+    public class ComboRequest
+    {
+        public PresetCombo Combo;
+        private bool _finished = false;
+        public int ProgressIndex;
+
+        public ComboRequest(PresetCombo combo)
+        {
+            Combo = combo;
+            ProgressIndex = 0;
+        }
+
+        public event Action<Null> OnTrickComplete;
+        public event Action<Null> OnTrickFailed;
+
+        public bool Progress(SingleKey.KeyType key)
+        {
+            if (LevelManager.current.selectedHouse && LevelManager.current.selectedHouse.RequestedCombo == this
+                                                   && key == Combo.KeySequence[ProgressIndex])
+            {
+                if (ProgressIndex < Combo.KeySequence.Count - 1)
+                {
+                    ProgressIndex++;
+                    Debug.Log(key.ToString() + " index: " + ProgressIndex);
+                    return true;
                 }
                 else
                 {
-                    ProgressIndex = 0;
-                    OnTrickFailed?.Invoke(null);
-                    return false;
+                    Debug.Log(key.ToString() + " finished");
+                    _finished = true;
+                    OnTrickComplete?.Invoke(null);
+                    return true;
                 }
             }
-
-            public void ProgressUnintendedIdle()
+            else
             {
                 ProgressIndex = 0;
                 OnTrickFailed?.Invoke(null);
+                return false;
             }
         }
+
+        public void ProgressUnintendedIdle()
+        {
+            ProgressIndex = 0;
+        }
+    }
+
     #endregion
 }

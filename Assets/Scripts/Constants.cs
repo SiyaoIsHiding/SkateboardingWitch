@@ -4,6 +4,7 @@ public static class Constants
     {
         public const float RANDOM_GOREQUEST_MIN_TIME = 1f;
         public const float RANDOM_GOREQUEST_MAX_TIME = 2f;
+        public const float GO_HAUNTED_TIME = 2f;
     }
     
     public static class Trick
@@ -12,4 +13,5 @@ public static class Constants
         public const float MOVE_END_TIME = 0.5f;
         public const float FALL_TIME = 0.2f;
     }
+    
 }

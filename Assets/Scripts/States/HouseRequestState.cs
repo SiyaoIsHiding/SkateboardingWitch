@@ -15,17 +15,17 @@ public class HouseRequestState : HouseBaseState
         base.Enter();
         Anim.SetTrigger(RequestTrigger);
         House.bubble.gameObject.SetActive(true);
-        InputManager.PresetCombo combo = InputManager.PresetCombo.PresetCombos[Random.Range(0, 6)];
+        InputManager.PresetCombo combo = InputManager.PresetCombo.PresetCombos[Random.Range(0, InputManager.PresetCombo.PresetCombos.Count)];
         House.RequestedCombo = new InputManager.ComboRequest(combo);
         House.RequestedCombo.OnTrickComplete += HandleTrick;
         House.RequestedCombo.OnTrickFailed += (@null => { Debug.Log("Trick failed"); });
-        Debug.Log("Requested combo: " + House.RequestedCombo.Combo.Type);
+        Debug.Log("Requested combo: " + House.RequestedCombo.Combo.ToString());
         // list the SingleKey in the combo
         string comboString = "";
-        comboString += House.HouseId.ToString();
-        foreach (InputManager.SingleKey key in House.RequestedCombo.Combo.KeySequence)
+        comboString += House.HouseId.ToString() + "  ";
+        foreach (InputManager.SingleKey.KeyType key in House.RequestedCombo.Combo.KeySequence)
         {
-            comboString += key.keyType.ToString() + " ";
+            comboString += key.ToString() + " ";
         }
         Debug.Log(comboString);
     }

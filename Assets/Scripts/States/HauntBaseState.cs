@@ -1,50 +1,46 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HouseBaseState
+public class HauntBaseState
 {
-    [Serializable]
     public enum STATE
     {
         NORMAL,
-        REQUEST,
-        DEAD
+        HAUNTING,
+        CAPTURED,
+        HAUNTED
     }
     
-    protected readonly int NormalTrigger = Animator.StringToHash("GoNormal");
-    protected readonly int RequestTrigger = Animator.StringToHash("GoRequest");
-    protected readonly int DeadTrigger = Animator.StringToHash("GoDead");
     protected readonly int HauntingTrigger = Animator.StringToHash("GoHaunting");
-
+    protected readonly int CapturedTrigger = Animator.StringToHash("GoCaptured");
+    protected readonly int HauntedTrigger = Animator.StringToHash("GoHaunted");
+    
     public enum EVENT
     {
         ENTER,
         UPDATE,
         EXIT
     }
-
+    
     public STATE StateName;
     protected EVENT Stage;
     protected Animator Anim;
     protected GameObject GO;
-    protected House House;
-    protected HouseBaseState NextState;
-
-    public HouseBaseState(GameObject go)
+    protected Haunt Haunt;
+    protected HauntBaseState NextState;
+    
+    public HauntBaseState(GameObject go)
     {
         GO = go;
         Anim = go.GetComponent<Animator>();
-        House = go.GetComponent<House>();
+        Haunt = go.GetComponent<Haunt>();
         Stage = EVENT.ENTER;
     }
     
     public virtual void Enter() { Stage = EVENT.UPDATE; }
     public virtual void Update() { Stage = EVENT.UPDATE; }
     public virtual void Exit() { Stage = EVENT.EXIT; }
-
-    public HouseBaseState Process()
+    
+    public HauntBaseState Process()
     {
         switch (Stage)
         {
@@ -58,13 +54,8 @@ public class HouseBaseState
                 Exit();
                 return NextState;
         }
-
+        
         return this;
     }
     
-    public void GoDead()
-    {
-        NextState = new HouseDeadState(GO);
-        Stage = EVENT.EXIT;
-    }
 }

@@ -4,27 +4,16 @@ using UnityEngine;
 
 public class HouseNormalState : HouseBaseState
 {
-    private bool startWithRequest = false;
-
-    public HouseNormalState(GameObject go, bool _startWithRequest = false) : base(go)
+    public HouseNormalState(GameObject go) : base(go)
     {
         StateName = STATE.NORMAL;
-        startWithRequest = _startWithRequest;
-        
     }
 
     public override void Enter()
     {
         base.Enter();
-        if (startWithRequest)
-        {
-            GoRequest();
-        }
-        else
-        {
-            Anim.SetTrigger(NormalTrigger);
-            House.StartCoroutine(RandomlyGoRequest());
-        }
+        Anim.SetTrigger(NormalTrigger);
+        House.StartCoroutine(RandomlyGoRequest());
     }
 
     public void GoRequest()
@@ -32,7 +21,7 @@ public class HouseNormalState : HouseBaseState
         NextState = new HouseRequestState(GO);
         Stage = EVENT.EXIT;
     }
-    
+
     private IEnumerator RandomlyGoRequest()
     {
         yield return new WaitForSeconds(Random.Range

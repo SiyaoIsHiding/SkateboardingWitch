@@ -73,14 +73,14 @@ public class WitchMoveBaseState : WitchBaseState
         else
         {
             // fail
-            GoIdle();
+            GoFall();
         }
         Stage = EVENT.EXIT;
     }
 
-    public void GoIdle()
+    public void GoFall()
     {
-        NextState = new WitchIdleState(GO);
+        NextState = new WitchFallState(GO);
         Stage = EVENT.EXIT;
     }
     
@@ -89,7 +89,7 @@ public class WitchMoveBaseState : WitchBaseState
         yield return new WaitForSeconds(Constants.Trick.MOVE_END_TIME);
         if (Witch.WitchState == this)
         {
-            GoIdle();
+            GoFall();
             requestedCombo?.ProgressUnintendedIdle();
         }
     }
