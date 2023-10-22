@@ -11,5 +11,6 @@ public class HauntHauntedState : HauntBaseState
     {
         base.Enter();
         Anim.SetTrigger(HauntedTrigger);
+        Haunt.house.HouseState.GoDead();
     }
 }

@@ -52,6 +52,14 @@ public class WitchController : MonoBehaviour
             _animator.SetFloat(VerticalAnimator, 0);
         }
     }
+
+    public void StayStill()
+    {
+        move.x = 0f;
+        move.y = 0f;
+        _animator.SetFloat(HorizontalAnimator, 0);
+        _animator.SetFloat(VerticalAnimator, 0);
+    }
     
     public void OnSpace(InputAction.CallbackContext context)
     {
@@ -121,6 +129,17 @@ public class WitchController : MonoBehaviour
             {
                 ((WitchMoveBaseState) WitchState).GoMove(InputManager.SingleKey.KeyType.P);
             }
+        }
+    }
+    
+    public void OnE(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+             if (WitchState is WitchIdleState)
+             {
+                 ((WitchIdleState) WitchState).GoCapture();
+             }
         }
     }
     

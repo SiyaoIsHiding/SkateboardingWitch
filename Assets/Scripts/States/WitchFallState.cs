@@ -23,7 +23,7 @@ public class WitchFallState : WitchBaseState
 
     private IEnumerator NaturallyEnds()
     {
-        yield return new WaitForSeconds(Constants.Trick.FALL_TIME);
+        yield return new WaitForSeconds(Constants.Witch.FALL_TIME);
         NextState = new WitchIdleState(GO);
         Stage = EVENT.EXIT;
     }

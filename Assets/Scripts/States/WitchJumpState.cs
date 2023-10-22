@@ -56,7 +56,7 @@ public class WitchJumpState : WitchBaseState
 
     IEnumerator NaturallyEnds()
     {
-        yield return new WaitForSeconds(Constants.Trick.JUMP_END_TIME);
+        yield return new WaitForSeconds(Constants.Witch.JUMP_END_TIME);
         if (Witch.WitchState == this)
         {
             GoFall();
