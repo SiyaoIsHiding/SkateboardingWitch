@@ -13,7 +13,6 @@ public class HauntHauntingState : HauntBaseState
     {
         base.Enter();
         Anim.SetTrigger(HauntingTrigger);
-        Debug.Log(Haunt.house.HouseId);
         LevelManager.current.ReadyHauntHouses.Remove(Haunt.house.HouseId);
         LevelManager.current.HauntingHouse.Add(Haunt.house.HouseId, Haunt.house);
         Haunt.StartCoroutine(NaturallyHaunted());

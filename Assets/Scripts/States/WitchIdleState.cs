@@ -11,11 +11,14 @@ public class WitchIdleState : WitchBaseState
     {
         base.Enter();
         Anim.SetTrigger(IdleTrigger);
+        Debug.LogWarning("Set IdleTrigger");
     }
 
     public void GoJump()
     {
-        InputManager.ComboRequest requestedCombo = LevelManager.current.selectedHouse? LevelManager.current.selectedHouse.RequestedCombo : null;
+        InputManager.ComboRequest requestedCombo = LevelManager.current.selectedHouse
+            ? LevelManager.current.selectedHouse.RequestedCombo
+            : null;
         if (requestedCombo == null)
         {
             return;
@@ -24,6 +27,17 @@ public class WitchIdleState : WitchBaseState
         if (requestedCombo.Progress(InputManager.SingleKey.KeyType.SPACE))
         {
             NextState = new WitchJumpState(GO);
+            Stage = EVENT.EXIT;
+        }
+    }
+
+    public void GoCapture()
+    {
+        bool isCaptured = LevelManager.current.Capture();
+        if (isCaptured)
+        {
+            Debug.Log("WitchIdleState GoCapture called");
+            NextState = new WitchCaptureState(GO);
             Stage = EVENT.EXIT;
         }
     }

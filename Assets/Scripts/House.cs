@@ -26,7 +26,6 @@ public class House : MonoBehaviour
         showArea.OnPlayerEnter += OnPlayerEnter;
         showArea.OnPlayerExit += OnPlayerExit;
     }
-
     
     void Update()
     {

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +18,7 @@ public class LevelManager : MonoBehaviour
     public Dictionary<int, House> ReadyRequestHouses = new Dictionary<int, House>();
     public Dictionary<int, House> HauntingHouse = new Dictionary<int, House>();
     public int GhostsLeftCount = Constants.Level.GHOST_COUNT;
-
+    public TextMeshProUGUI ghostCountText;
     private void Awake()
     {
         current = this;
@@ -58,7 +60,8 @@ public class LevelManager : MonoBehaviour
     private House GetRandomHouse(Dictionary<int, House> houses)
     {
         int index = UnityEngine.Random.Range(0, houses.Count);
-        House house = houses[index];
+        // houses[keys][index]
+        House house = houses.Values.ElementAt(index);
         return house;
     }
 
@@ -79,14 +82,20 @@ public class LevelManager : MonoBehaviour
 
     public bool Capture()
     {
+        Debug.Log("Tried Capture");
         // if the selected house is in HauntingHouse
-        if (HauntingHouse.ContainsKey(selectedHouse.HouseId))
+        Debug.Log("selectedHouse: " + (selectedHouse != null).ToString());
+        Debug.Log("InHauntingHouse: " + HauntingHouse.ContainsKey(selectedHouse.HouseId).ToString());
+        if (selectedHouse && HauntingHouse.ContainsKey(selectedHouse.HouseId))
         {
             if (candyCount == Constants.Level.CANDY_MAX)
             {
+                Debug.Log("Eligible to caputre");
                 candyCount = 0;
                 spellMeter.AdjustSpellMeter(candyCount);
                 GhostsLeftCount--;
+                ((HauntHauntingState)selectedHouse.haunt.CurrentState).GoCaptured();
+                ghostCountText.text = "x" + GhostsLeftCount.ToString();
                 return true;
             }
         }

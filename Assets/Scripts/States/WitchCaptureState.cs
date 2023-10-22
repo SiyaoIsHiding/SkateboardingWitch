@@ -11,6 +11,7 @@ public class WitchCaptureState : WitchBaseState
     public override void Enter()
     {
         base.Enter();
+        Anim.ResetTrigger(IdleTrigger);
         Anim.SetTrigger(CaptureTrigger);
         Witch.StayStill();
         Witch.StartCoroutine(NaturallyEnds());

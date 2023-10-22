@@ -136,16 +136,10 @@ public class WitchController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            //TODO: 
-            // capture
-            // if (WitchState is WitchJumpState)
-            // {
-            //     ((WitchJumpState) WitchState).GoMove(InputManager.SingleKey.KeyType.E);
-            // }
-            // else if (WitchState is WitchMoveBaseState)
-            // {
-            //     ((WitchMoveBaseState) WitchState).GoMove(InputManager.SingleKey.KeyType.E);
-            // }
+             if (WitchState is WitchIdleState)
+             {
+                 ((WitchIdleState) WitchState).GoCapture();
+             }
         }
     }
     
