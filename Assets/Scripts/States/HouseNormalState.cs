@@ -26,6 +26,7 @@ public class HouseNormalState : HouseBaseState
     {
         yield return new WaitForSeconds(Random.Range
             (Constants.House.RANDOM_GOREQUEST_MIN_TIME, Constants.House.RANDOM_GOREQUEST_MAX_TIME));
-        GoRequest();
+        if (House.HouseState == this)
+            GoRequest();
     }
 }

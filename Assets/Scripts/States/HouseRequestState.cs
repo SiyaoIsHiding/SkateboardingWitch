@@ -13,13 +13,13 @@ public class HouseRequestState : HouseBaseState
     public override void Enter()
     {
         base.Enter();
+        LevelManager.current.ReadyRequestHouses.Remove(House.HouseId);
         Anim.SetTrigger(RequestTrigger);
         House.bubble.gameObject.SetActive(true);
         InputManager.PresetCombo combo = InputManager.PresetCombo.PresetCombos[Random.Range(0, InputManager.PresetCombo.PresetCombos.Count)];
         House.RequestedCombo = new InputManager.ComboRequest(combo);
         House.RequestedCombo.OnTrickComplete += HandleTrick;
         House.RequestedCombo.OnTrickFailed += (@null => { Debug.Log("Trick failed"); });
-        Debug.Log("Requested combo: " + House.RequestedCombo.Combo.ToString());
         // list the SingleKey in the combo
         string comboString = "";
         comboString += House.HouseId.ToString() + "  ";
@@ -33,6 +33,7 @@ public class HouseRequestState : HouseBaseState
     public override void Exit()
     {
         base.Exit();
+        LevelManager.current.ReadyRequestHouses.Add(House.HouseId, House);
         House.bubble.gameObject.SetActive(false);
     }
 

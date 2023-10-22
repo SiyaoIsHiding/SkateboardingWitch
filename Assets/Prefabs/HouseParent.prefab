@@ -128,6 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7310600430990299490}
   - component: {fileID: 964064745545678693}
+  - component: {fileID: 537036571902356067}
   m_Layer: 0
   m_Name: Haunt
   m_TagString: Untagged
@@ -172,6 +173,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &537036571902356067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7904273060145331450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff65873afca24cc394eab5c7df59c8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  house: {fileID: 2458251832897076170}
 --- !u!1001 &642700100673327506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -301,6 +315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4600719538537239886, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6324375053370775423, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
       propertyPath: m_Size.x
       value: 4.1433916
@@ -325,11 +343,26 @@ PrefabInstance:
       propertyPath: candy
       value: 
       objectReference: {fileID: 6129490843276906382}
+    - target: {fileID: 8667762930232853649, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+      propertyPath: haunt
+      value: 
+      objectReference: {fileID: 537036571902356067}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+--- !u!114 &2458251832897076170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8667762930232853649, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}
+  m_PrefabInstance: {fileID: 6509781130107715419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79eaa28fc3ed04e64a6f90315b83bffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7966429306924269681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3808095084908904234, guid: 3c96204c0a1264d859cdacc4d79c3677, type: 3}

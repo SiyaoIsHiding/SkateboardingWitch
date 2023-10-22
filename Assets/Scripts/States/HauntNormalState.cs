@@ -2,9 +2,9 @@
 
 using UnityEngine;
 
-public class HauntedNormalState : HauntBaseState
+public class HauntNormalState : HauntBaseState
 {
-    public HauntedNormalState(GameObject go) : base(go)
+    public HauntNormalState(GameObject go) : base(go)
     {
         StateName = STATE.NORMAL;
     }

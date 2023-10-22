@@ -13,7 +13,7 @@ public class House : MonoBehaviour
     public Candy candy;
     public Bubble bubble;
     public InputManager.ComboRequest RequestedCombo;
-    
+    public Haunt haunt;
     
     void Awake()
     {

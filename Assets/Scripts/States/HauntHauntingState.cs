@@ -12,6 +12,13 @@ public class HauntHauntingState : HauntBaseState
     {
         base.Enter();
         Anim.SetTrigger(HauntingTrigger);
+        LevelManager.current.ReadyHauntHouses.Remove(Haunt.house.HouseId);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        LevelManager.current.ReadyHauntHouses.Add(Haunt.house.HouseId, Haunt.house);
     }
 
     public void GoCaptured()

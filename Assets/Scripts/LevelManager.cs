@@ -9,9 +9,11 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager current;
     public float spellMeterValue = 0f;
-    public float timeRemain = 60f;
     public House selectedHouse;
     public SpellMeter spellMeter;
+    public House[] allHouses;
+    public Dictionary<int, House> ReadyHauntHouses = new Dictionary<int, House>();
+    public Dictionary<int, House> ReadyRequestHouses = new Dictionary<int, House>();
 
     private void Awake()
     {
@@ -21,13 +23,22 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        
+        foreach (var h in allHouses)
+        {
+            ReadyHauntHouses.Add(h.HouseId, h);
+            ReadyRequestHouses.Add(h.HouseId, h);
+        }
+
+        for (int i = 0; i < Constants.House.INITIAL_REQUEST_COUNT; i++)
+        {
+            House h = GetRandomHouse(ReadyRequestHouses);
+            ((HouseNormalState) h.HouseState).GoRequest();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeRemain -= Time.deltaTime;
     }
     
     public void CandyCollected()
@@ -35,14 +46,21 @@ public class LevelManager : MonoBehaviour
         spellMeter.AdjustSpellMeter(spellMeterValue + 0.2f);
         spellMeterValue = spellMeter.GetSpellMeter();
     }
+    
+    private House GetRandomHouse(Dictionary<int, House> houses)
+    {
+        int index = UnityEngine.Random.Range(0, houses.Count);
+        House house = houses[index];
+        return house;
+    }
 
-    // public void ProcessTrickKey(InputManager.SingleKey.KeyType singleKey)
-    // {
-    //     if (selectedHouse != null && selectedHouse.HouseState is HouseRequestState && selectedHouse.RequestedCombo != null)
-    //     {
-    //         selectedHouse.RequestedCombo.OnTrickComplete += @null => { Debug.Log("Trick completed"); };
-    //         selectedHouse.RequestedCombo.OnTrickFailed += @null => { Debug.Log("Trick failed"); };
-    //         selectedHouse.RequestedCombo.Progress(singleKey);
-    //     }
-    // }
+    IEnumerator HauntInLoop()
+    {
+        while (ReadyHauntHouses.Count > 0)
+        {
+            yield return new WaitForSeconds(Constants.House.GO_HAUNTING_TIME);
+            House h = GetRandomHouse(ReadyHauntHouses);
+            ((HauntNormalState) h.haunt.CurrentState).GoHaunting();
+        }
+    }
 }
