@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HouseRequestState : HouseBaseState
 {
@@ -9,16 +11,18 @@ public class HouseRequestState : HouseBaseState
     {
         StateName = STATE.REQUEST;
     }
-    
+
     public override void Enter()
     {
         base.Enter();
         LevelManager.current.ReadyRequestHouses.Remove(House.HouseId);
         Anim.SetTrigger(RequestTrigger);
-        InputManager.PresetCombo combo = InputManager.PresetCombo.PresetCombos[Random.Range(0, InputManager.PresetCombo.PresetCombos.Count)];
+        InputManager.PresetCombo combo =
+            InputManager.PresetCombo.PresetCombos[Random.Range(0, InputManager.PresetCombo.PresetCombos.Count)];
         House.RequestedCombo = new InputManager.ComboRequest(combo);
         House.bubble.SetCombo(combo);
         House.bubble.SetVisible();
+        House.resident.SetActive(true);
         House.RequestedCombo.OnTrickComplete += HandleTrick;
         House.RequestedCombo.OnTrickFailed += (@null => { Debug.Log("Trick failed"); });
         // list the SingleKey in the combo
@@ -34,8 +38,16 @@ public class HouseRequestState : HouseBaseState
     public override void Exit()
     {
         base.Exit();
-        LevelManager.current.ReadyRequestHouses.Add(House.HouseId, House);
+        try
+        {
+            LevelManager.current.ReadyRequestHouses.Add(House.HouseId, House);
+        }
+        catch (Exception _e)
+        {
+        }
+
         House.bubble.SetInvisible();
+        House.resident.SetActive(false);
     }
 
     private void HandleTrick(Null @null)
@@ -46,6 +58,7 @@ public class HouseRequestState : HouseBaseState
             GoNormal();
         }
     }
+
     /**
      * Got satisfied. Cheers, and drop candy.
      */
