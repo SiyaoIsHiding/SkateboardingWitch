@@ -37,10 +37,12 @@ public class House : MonoBehaviour
     private void OnPlayerEnter(Collider2D collider)
     {
         LevelManager.current.selectedHouse = this;
+        LevelManager.current.CheckE2Consume();
     }
     
     private void OnPlayerExit(Collider2D collider)
     {
         LevelManager.current.selectedHouse = null;
+        LevelManager.current.CheckE2Consume();
     }
 }

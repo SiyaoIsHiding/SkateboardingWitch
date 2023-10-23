@@ -5297,6 +5297,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5b5f6daf330a8c441b3839057003f443, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent2
@@ -5921,6 +5925,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b93e6453c5970d8439080ad85e0bac11, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent7
@@ -12206,9 +12214,9 @@ RectTransform:
   - {fileID: 59574835}
   m_Father: {fileID: 941838839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 241, y: -147}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1201, y: -687}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597916572
@@ -13533,8 +13541,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.5801754, y: -0.56431603, z: 0.13384739}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.81, y: 0.81, z: 0.81}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 941838839}
   m_Father: {fileID: 0}
@@ -15360,6 +15368,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5b5f6daf330a8c441b3839057003f443, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent6
@@ -19980,6 +19992,7 @@ RectTransform:
   m_Children:
   - {fileID: 597916571}
   - {fileID: 1362659526}
+  - {fileID: 1127783982}
   m_Father: {fileID: 686444986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -20016,10 +20029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -20186,6 +20199,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5b5f6daf330a8c441b3839057003f443, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent11
@@ -21868,6 +21885,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8b0fa3ac4e6de1441b72b3adfc8e523b, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent9
@@ -22764,6 +22785,7 @@ MonoBehaviour:
   - {fileID: 1150560475}
   GhostsLeftCount: 5
   ghostCountText: {fileID: 1325850860}
+  E2Consume: {fileID: 1127783981}
 --- !u!1 &1059564770
 GameObject:
   m_ObjectHideFlags: 0
@@ -22969,6 +22991,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b93e6453c5970d8439080ad85e0bac11, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent3
@@ -24273,6 +24299,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: aca119f483fb25f4681306556d9998f1, type: 3}
   m_PrefabInstance: {fileID: 1122083501}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1127783981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1127783982}
+  - component: {fileID: 1127783984}
+  - component: {fileID: 1127783983}
+  m_Layer: 0
+  m_Name: E2Consume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1127783982
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127783981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.63, y: 0.63, z: 0.63}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 941838839}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -294, y: -94}
+  m_SizeDelta: {x: 693, y: 113}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1127783983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127783981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6eb08cbb5b69e4a7f9ba305a8dfc5bbd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1127783984
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127783981}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1128250558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24923,6 +25024,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8b0fa3ac4e6de1441b72b3adfc8e523b, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent12
@@ -30214,9 +30319,9 @@ RectTransform:
   - {fileID: 1325850859}
   m_Father: {fileID: 941838839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -825, y: 153}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 135, y: -387}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1362659528
@@ -33508,6 +33613,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8b0fa3ac4e6de1441b72b3adfc8e523b, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent8
@@ -39627,7 +39736,7 @@ Transform:
   m_GameObject: {fileID: 1783248453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.12, y: -0.33, z: -34.44}
+  m_LocalPosition: {x: 13.97, y: -20.83, z: -34.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42267,6 +42376,10 @@ PrefabInstance:
       propertyPath: HouseId
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4810819132764051980, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8b0fa3ac4e6de1441b72b3adfc8e523b, type: 2}
     - target: {fileID: 5203955360165430614, guid: 1b157b1244d1d4f5185860bfd21959d2, type: 3}
       propertyPath: m_Name
       value: HouseParent4

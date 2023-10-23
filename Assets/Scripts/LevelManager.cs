@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -20,7 +21,8 @@ public class LevelManager : MonoBehaviour
     public Dictionary<int, House> HauntingHouse = new Dictionary<int, House>();
     public int GhostsLeftCount = Constants.Level.GHOST_COUNT;
     public TextMeshProUGUI ghostCountText;
-
+    public GameObject E2Consume;
+    
     private void Awake()
     {
         current = this;
@@ -46,6 +48,19 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void CheckE2Consume()
+    {
+        if (selectedHouse && HauntingHouse.ContainsKey(selectedHouse.HouseId))
+        {
+            if (candyCount == Constants.Level.CANDY_MAX)
+            {
+                E2Consume.SetActive(true);
+                return;
+            }
+        }
+        E2Consume.SetActive(false);
+    }
+
     void Start()
     {
         for (int i = 0; i < Constants.House.INITIAL_REQUEST_COUNT; i++)
@@ -60,6 +75,11 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ReadyHauntHouses.Count == 0 && HauntingHouse.Count == 0)
+        {
+            // open the Gameover scene
+            SceneManager.LoadScene("intro2");
+        }
     }
 
     public void CandyCollected()
