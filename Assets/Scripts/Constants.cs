@@ -2,10 +2,10 @@ public static class Constants
 {
     public static class House
     {
-        public const float RANDOM_GOREQUEST_MIN_TIME = 4f;
-        public const float RANDOM_GOREQUEST_MAX_TIME = 10f;
-        public const float GO_HAUNTING_TIME = 3f;
-        public const float GO_HAUNTED_TIME = 20f;
+        public const float RANDOM_GOREQUEST_MIN_TIME = 8f;
+        public const float RANDOM_GOREQUEST_MAX_TIME = 12f;
+        public const float GO_HAUNTING_TIME = 10f;
+        public const float GO_HAUNTED_TIME = 25f;
         public const int INITIAL_REQUEST_COUNT = 3;
     }
     

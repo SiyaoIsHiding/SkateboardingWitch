@@ -21,6 +21,14 @@ public class Candy : MonoBehaviour
     {
         //TODO: candy does not appear again after collected
         LevelManager.current.CandyCollected();
+        // delay 0.3 seconds
+        StartCoroutine(Delay());
+    }
+    
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(0.3f);
         gameObject.SetActive(false);
     }
+    
 }

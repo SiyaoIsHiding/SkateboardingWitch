@@ -78,7 +78,7 @@ public class LevelManager : MonoBehaviour
         if (ReadyHauntHouses.Count == 0 && HauntingHouse.Count == 0)
         {
             // open the Gameover scene
-            SceneManager.LoadScene("intro2");
+            SceneManager.LoadScene("GameOver");
         }
     }
 
